@@ -4,6 +4,17 @@
     
     <!-- Capa oscura para que el texto resalte -->
     <div class="absolute inset-0 bg-black/30 z-0"></div>
+
+   <!-- 🎄 NUEVO: Franja decorativa superior completa -->
+    <div class="absolute top-0 left-0 right-0 z-20 pointer-events-none overflow-hidden h-20 md:h-40">
+      <img 
+        src="/images/esquina-navidad.png" 
+        alt="" 
+        aria-hidden="true"
+        class="w-full h-full object-cover object-top"
+        style="mask-image: linear-gradient(to bottom, black 60%, transparent 100%);"
+      />
+    </div>
     
     <!-- Decoraciones navideñas (con aria-hidden para accesibilidad) -->
     <div class="absolute inset-0 opacity-10 pointer-events-none" aria-hidden="true">
@@ -13,7 +24,7 @@
       <div class="absolute bottom-10 right-10 text-5xl animate-pulse hidden md:block">🎁</div>
     </div>
 
-    <div class="relative z-10 text-center text-white px-4 max-w-4xl mx-auto py-20" data-aos="fade-up">
+    <div class="relative z-10 text-center text-white px-4 max-w-4xl mx-auto py-20 mt-20 md:mt-20" data-aos="fade-up">
       
       <!-- Emoji decorativo principal -->
       <div class="mb-6" data-aos="zoom-in" data-aos-delay="200">

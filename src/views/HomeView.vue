@@ -6,6 +6,7 @@ import VolunteerForm from '../components/VolunteerForm.vue'
 
 import Footer from '../components/Footer.vue'
 import SnowFall from '@/components/SnowFall.vue'
+import NavidadDivider from '@/components/NavidadDivider.vue'
 </script>
 
 <template>
@@ -13,7 +14,9 @@ import SnowFall from '@/components/SnowFall.vue'
     <SnowFall/>
     <HeroSection />
     <AboutEvent />
+    <NavidadDivider/>
     <HowToHelp />
+        <NavidadDivider/>
     <VolunteerForm />
 
     <Footer />

@@ -32,9 +32,9 @@
             Tu amor puede cambiar<br/>la Navidad de una familia
           </h3>
           <p class="text-lg text-gray-700 mb-6 leading-relaxed">
-            En esta Navidad, la Iglesia Adventista del Séptimo Día de San Pedro, Quillota, 
-            se une para brindar un momento especial de celebración y amor a personas de 
-            bajos recursos de nuestra comunidad.
+            En esta Navidad, la Iglesia Adventista del Séptimo Día Quillota, 
+            se une para brindar un momento especial de celebración y amor a familias de 
+            de nuestra comunidad.
           </p>
           <p class="text-lg text-gray-700 mb-6 leading-relaxed">
             Nuestro objetivo es compartir una cena navideña, entregar regalos a los niños 

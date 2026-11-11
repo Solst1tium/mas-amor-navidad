@@ -130,7 +130,7 @@ onUnmounted(() => {
                   pueda celebrar la Navidad con dignidad.
                 </p>
                 <!-- ✅ BOTÓN ROJO -->
-                <a href="https://wa.me/56912345678?text=Hola,%20quiero%20donar%20una%20caja%20de%20mercadería"
+                <a href="https://wa.me/56953519917?text=Hola,%20quiero%20donar%20una%20caja%20de%20mercadería"
                   target="_blank"
                   class="w-full block text-center bg-navidad-red text-white py-3 rounded-full font-semibold hover:bg-red-800 transition shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
                   Quiero aportar
@@ -166,7 +166,7 @@ onUnmounted(() => {
                   Ayúdanos a preparar una cena especial para quienes más lo necesitan. Cada aporte cuenta.
                 </p>
                 <!-- ✅ BOTÓN VERDE -->
-                <a href="https://wa.me/56912345678?text=Hola,%20quiero%20aportar%20para%20la%20cena%20navideña"
+                <a href="https://wa.me/56953519917?text=Hola,%20quiero%20aportar%20para%20la%20cena%20navideña"
                   target="_blank"
                   class="w-full block text-center bg-navidad-green text-white py-3 rounded-full font-semibold hover:bg-green-800 transition shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
                   Donar ahora

@@ -8,7 +8,7 @@
    <!-- 🎄 NUEVO: Franja decorativa superior completa -->
     <div class="absolute top-0 left-0 right-0 z-20 pointer-events-none overflow-hidden h-20 md:h-40">
       <img 
-        src="/images/esquina-navidad.png" 
+        src="/images/esquina-navidad.webp" 
         alt="" 
         aria-hidden="true"
         class="w-full h-full object-cover object-top"

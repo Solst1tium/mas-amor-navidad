@@ -44,7 +44,12 @@ onUnmounted(() => {
   clearInterval(intervalo)
 })
 
-
+const irASeccion = (idSeccion) => {
+  const seccion = document.getElementById(idSeccion)
+  if (seccion) {
+    seccion.scrollIntoView({ behavior: 'smooth' })
+  }
+}
 </script>
 
 <template>
@@ -202,7 +207,8 @@ onUnmounted(() => {
                   pueden hacer la diferencia.
                 </p>
                 <!-- ✅ BOTÓN DORADO/AMARILLO -->
-                <a href="#voluntarios"
+                <a @click.prevent="irASeccion('voluntarios')"
+                href="#voluntarios"
                   class="w-full block text-center bg-navidad-gold text-white py-3 rounded-full font-semibold hover:bg-yellow-600 transition shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
                   Inscribirme
                 </a>

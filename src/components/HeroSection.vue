@@ -1,3 +1,12 @@
+<script setup>
+const irASeccion = (idSeccion) => {
+  const seccion = document.getElementById(idSeccion)
+  if (seccion) {
+    seccion.scrollIntoView({ behavior: 'smooth' })
+  }
+}
+</script>
+
 <template>
   <section
     class="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-navidad-red via-red-700 to-navidad-green">
@@ -69,13 +78,13 @@
 
       <!-- Botones de Acción -->
       <div class="flex flex-col sm:flex-row gap-4 justify-center" data-aos="fade-up" data-aos-delay="1000">
-        <a 
+        <a @click.prevent="irASeccion('ayudar')"
           href="#ayudar" 
           class="bg-white text-navidad-red px-8 py-4 rounded-full font-bold text-lg hover:bg-navidad-cream transition-all duration-300 transform hover:scale-105 shadow-xl text-center"
         >
           Quiero Ayudar 🙋🏽‍♀️
         </a>
-        <a 
+        <a  @click.prevent="irASeccion('evento')"
           href="#voluntarios"
           class="border-2 border-white text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-navidad-red transition-all duration-300 transform hover:scale-105 shadow-xl text-center bg-transparent"
         >

@@ -48,7 +48,7 @@ const enviarFormulario = async () => {
       },
       body: JSON.stringify({
         _subject: `🎄 Nuevo Voluntario: ${formData.value.nombre}`,
-      
+        _replyto: formData.value.email,
 
         'Nombre': formData.value.nombre,
         'Email': formData.value.email,

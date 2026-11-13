@@ -8,25 +8,22 @@ const irASeccion = (idSeccion) => {
 </script>
 
 <template>
-    <section class="py-20 bg-navidad-cream relative overflow-hidden">
-        <!-- Decoración sutil de fondo -->
-        <div class="absolute top-10 left-10 text-7xl opacity-5 pointer-events-none select-none" aria-hidden="true">🎄
-        </div>
-        <div class="absolute bottom-10 right-10 text-7xl opacity-5 pointer-events-none select-none" aria-hidden="true">⭐
-        </div>
+   <section class="py-20 bg-navidad-cream relative overflow-hidden">
+    <div class="absolute top-10 left-10 text-7xl opacity-5 pointer-events-none select-none" aria-hidden="true">🎄</div>
+    <div class="absolute bottom-10 right-10 text-7xl opacity-5 pointer-events-none select-none" aria-hidden="true">⭐</div>
 
-        <div class="max-w-6xl mx-auto px-4 relative z-10">
+    <div class="max-w-6xl mx-auto px-4 relative z-10">
 
-            <!-- Título de la sección -->
-            <div class="text-center mb-14" data-aos="fade-up">
-                <h2 class="text-3xl md:text-4xl font-display font-bold text-navidad-green mb-4">
-                    Así vivimos la Navidad el año pasado
-                </h2>
-                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-                    Momentos reales de alegría, comunidad y esperanza que este año queremos multiplicar contigo.
-                </p>
-                <div class="w-24 h-1 bg-navidad-gold mx-auto mt-6" aria-hidden="true"></div>
-            </div>
+      <!-- Título de la sección estandarizado -->
+      <div class="text-center mb-14" data-aos="fade-up">
+       <h2 class="text-4xl md:text-5xl font-display font-bold text-navidad-green mb-4">
+  Así vivimos la Navidad el año pasado
+</h2>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+          Momentos reales de alegría, comunidad y esperanza que este año queremos multiplicar contigo.
+        </p>
+        <div class="w-24 h-1 bg-navidad-gold mx-auto mt-6" aria-hidden="true"></div>
+      </div>
 
             <!-- Grid asimétrico equilibrado (3 columnas) -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">

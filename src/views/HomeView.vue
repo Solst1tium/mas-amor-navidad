@@ -15,9 +15,13 @@ import PastGallery from '@/components/PastGallery.vue'
     <SnowFall/>
     <HeroSection />
     <AboutEvent />
-    <NavidadDivider/>
+
+    <NavidadDivider/>    
     <PastGallery/>
+
+      <NavidadDivider :reverse="true"/>
     <HowToHelp />
+
         <NavidadDivider/>
     <VolunteerForm />
 

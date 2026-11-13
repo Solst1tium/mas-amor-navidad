@@ -13,11 +13,13 @@ const formData = ref({
 const enviando = ref(false)
 const mensajeExito = ref(false)
 const errorMensaje = ref('')
+let errorTimeout = null
 
 const enviarFormulario = async () => {
-  // Limpiar mensajes previos cada vez que intentan enviar
+  // Limpiar mensajes previos y cancelar timers anteriores
   errorMensaje.value = ''
   mensajeExito.value = false
+  if (errorTimeout) clearTimeout(errorTimeout)
 
   // 1. Validación: asegurar que al menos un área esté seleccionada
   if (formData.value.areas.length === 0) {
@@ -26,7 +28,7 @@ const enviarFormulario = async () => {
     return
   }
 
- // 2. Validación de "Otro" (Sin alert)
+  // 2. Validación de "Otro"
   if (formData.value.areas.includes('otro') && !formData.value.mensaje.trim()) {
     errorMensaje.value = 'Seleccionaste "Otro". Por favor, especifica en el mensaje cómo te gustaría ayudar.'
     ocultarErrorDespuesDe(5000)
@@ -36,7 +38,6 @@ const enviarFormulario = async () => {
   enviando.value = true
 
   try {
-    // URL DE FORMSPREE
     const FORMSPREE_URL = 'https://formspree.io/f/xgakelzk'
 
     const response = await fetch(FORMSPREE_URL, {
@@ -46,16 +47,14 @@ const enviarFormulario = async () => {
         'Accept': 'application/json'
       },
       body: JSON.stringify({
-        // 🎯 TRUCOS PARA QUE EL CORREO SE VEA PROFESIONAL:
-        _subject: `🎄 Nuevo Voluntario: ${formData.value.nombre}`, // Asunto del correo personalizado
-        _replyto: formData.value.email, // Te permite responderle directo desde tu Gmail/Outlook
+        _subject: `🎄 Nuevo Voluntario: ${formData.value.nombre}`,
+        _replyto: formData.value.email,
 
         'Nombre': formData.value.nombre,
         'Email': formData.value.email,
         'Teléfono': formData.value.telefono,
-        'Edad': formData.value.edad ? `${formData.value.edad} años` : 'No especificada', // Se lee mejor
+        'Edad': formData.value.edad ? `${formData.value.edad} años` : 'No especificada',
 
-        // Convierte los códigos en texto legible con emojis
         'Áreas de ayuda': formData.value.areas.map(area => {
           const etiquetas = {
             'servir_cena': '🍽️ Servir la cena',
@@ -66,15 +65,12 @@ const enviarFormulario = async () => {
           return etiquetas[area] || area
         }).join(', '),
 
-        'Mensaje': formData.value.mensaje || 'Sin mensaje adicional' // Evita que llegue el campo vacío
+        'Mensaje': formData.value.mensaje || 'Sin mensaje adicional'
       })
     })
 
     if (response.ok) {
-      // Éxito
       mensajeExito.value = true
-
-      // Limpiar formulario
       formData.value = {
         nombre: '',
         email: '',
@@ -84,10 +80,8 @@ const enviarFormulario = async () => {
         mensaje: ''
       }
       
-      // Ocultar mensaje de éxito después de 6 segundos
-       setTimeout(() => { mensajeExito.value = false }, 6000)
+      setTimeout(() => { mensajeExito.value = false }, 6000)
     } else {
-      // Errores de Formspree
       const data = await response.json()
       errorMensaje.value = data.errors ? data.errors.map(e => e.message).join(', ') : 'Hubo un error al enviar. Intenta nuevamente.'
       ocultarErrorDespuesDe(5000)
@@ -102,22 +96,19 @@ const enviarFormulario = async () => {
   }
 }
 
-// Función auxiliar para que el error desaparezca solo
 const ocultarErrorDespuesDe = (tiempo) => {
-  setTimeout(() => {
+  if (errorTimeout) clearTimeout(errorTimeout)
+  errorTimeout = setTimeout(() => {
     errorMensaje.value = ''
   }, tiempo)
 }
-
-
-
 </script>
 
 <template>
   <section id="voluntarios" class="py-20 bg-navidad-cream relative overflow-hidden">
     <!-- Decoración sutil de fondo -->
-    <div class="absolute top-0 right-0 text-8xl opacity-5 pointer-events-none">🎄</div>
-    <div class="absolute bottom-0 left-0 text-8xl opacity-5 pointer-events-none">⭐</div>
+    <div class="absolute top-0 right-0 text-8xl opacity-5 pointer-events-none" aria-hidden="true">🎄</div>
+    <div class="absolute bottom-0 left-0 text-8xl opacity-5 pointer-events-none" aria-hidden="true">⭐</div>
 
     <div class="max-w-4xl mx-auto px-4 relative z-10">
       <div class="text-center mb-12" data-aos="fade-up">
@@ -211,8 +202,7 @@ const ocultarErrorDespuesDe = (tiempo) => {
                 class="flex items-center gap-3 p-3 rounded-lg border-2 border-gray-200 cursor-pointer hover:border-navidad-green hover:bg-green-50 transition group">
                 <input type="checkbox" v-model="formData.areas" value="otro"
                   class="w-5 h-5 text-navidad-green rounded focus:ring-navidad-green cursor-pointer" />
-                <span class="text-gray-700 group-hover:text-navidad-green font-medium">💡 Otro (especificar en
-                  mensaje)</span>
+                <span class="text-gray-700 group-hover:text-navidad-green font-medium">💡 Otro (especificar en mensaje)</span>
               </label>
             </div>
           </div>
@@ -239,11 +229,10 @@ const ocultarErrorDespuesDe = (tiempo) => {
           </div>
         </div>
 
-
-        <!-- MENSAJE DE ERROR (Aparece solo si hay error) -->
+        <!-- MENSAJE DE ERROR (Estático, limpio y profesional, sin rebotes molestos) -->
         <div 
           v-if="errorMensaje" 
-          class="mb-6 bg-red-50 border-2 border-red-200 text-red-800 px-6 py-4 rounded-xl text-center flex items-center justify-center gap-3 animate-pulse" 
+          class="my-6 bg-red-50 border-2 border-red-200 text-red-800 px-6 py-4 rounded-xl text-center flex items-center justify-center gap-3 shadow-sm" 
           role="alert"
         >
           <svg class="w-6 h-6 text-red-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -252,8 +241,8 @@ const ocultarErrorDespuesDe = (tiempo) => {
           <span class="font-semibold">{{ errorMensaje }}</span>
         </div>
 
-           <!-- Botón de envío -->
-        <div class="text-center">
+        <!-- Botón de envío -->
+        <div class="text-center mt-6">
           <button 
             type="submit" 
             :disabled="enviando"
@@ -267,7 +256,7 @@ const ocultarErrorDespuesDe = (tiempo) => {
         <!-- MENSAJE DE ÉXITO -->
         <div 
           v-if="mensajeExito" 
-          class="mt-6 bg-green-50 border-2 border-green-200 text-green-800 px-6 py-4 rounded-xl text-center flex items-center justify-center gap-3" 
+          class="mt-6 bg-green-50 border-2 border-green-200 text-green-800 px-6 py-4 rounded-xl text-center flex items-center justify-center gap-3 shadow-sm" 
           role="alert"
         >
           <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">

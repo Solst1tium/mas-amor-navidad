@@ -129,7 +129,7 @@ const irASeccion = (idSeccion) => {
                 1 Caja = 1 Familia
               </div>
               <p class="text-gray-600 mb-6 flex-grow">
-                Una caja completa con alimentos esenciales para que una familia pueda celebrar la Navidad con dignidad.
+                Una caja completa con alimentos esenciales para que una familia pueda celebrar una Navidad plena.
               </p>
               <a href="https://wa.me/56995129108?text=Hola,%20quiero%20donar%20una%20caja%20de%20mercadería"
                 target="_blank" rel="noopener noreferrer"
